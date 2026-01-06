@@ -37,14 +37,11 @@ Four endpoints for Tasks. Leveraging Spring security to handle a lot of the auth
 3. PUT /tasks/{id}
 4. DELET /tasks/{id}
 
+All tasks and users stored using H2 database for ease
+
 CORS to restrict origins.
 
 Cookies to store the jwt token to avoid sending the token back in the response and using localstorage. Approach also requires less code in front end.
-
-H2 database to store users and tasks for ease.
-
-Since the application is small I used a single TaskRequest and AuthRequest model which doubles up as the @Entity class, as opposed to have two separate 
-
 
 ## Trade offs made due to time 
 

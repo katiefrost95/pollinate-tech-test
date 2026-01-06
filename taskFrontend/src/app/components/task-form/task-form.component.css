@@ -1,0 +1,128 @@
+.task-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+input, textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+.task-list {
+    max-width: 400px;
+    margin: 0 auto;
+}
+li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Layout for each task row */
+.tasks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left section vs right actions */
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.task-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-width: 0; /* helps text ellipsis if you add it */
+}
+
+.task-title {
+  font-weight: 600;
+}
+
+.task-date {
+  color: #666;
+}
+
+/* Actions on the right: compact buttons */
+.task-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Button styles */
+.btn {
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  color: #333;
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #efefef;
+}
+
+.btn-primary {
+  border-color: #2b6cb0;
+  background: #2b6cb0;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #245f9b;
+}
+
+.btn-danger {
+  border-color: #c53030;
+  background: #c53030;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #a12727;
+}
+
+/* Extra-small variant */
+.btn-xs {
+  padding: 0.2rem 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+/* Inline inputs for edit mode */
+.inline-input {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 0.3rem 0.4rem;
+  font-size: 0.9rem;
+}
+
+.title-input {
+  min-width: 14rem;
+}
+
+.date-input {
+  min-width: 10rem;
+}
+

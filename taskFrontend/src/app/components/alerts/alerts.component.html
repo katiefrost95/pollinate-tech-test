@@ -1,0 +1,13 @@
+<ng-container *ngIf="alert$ | async as a">
+  <div
+    class="alert"
+    [ngClass]="{
+      'alert-success': a.type === 'success',
+      'alert-error': a.type === 'error'
+    }"
+    [attr.role]="a.type === 'error' ? 'alert' : 'status'"
+  >
+    {{ a.message }}
+  </div>
+</ng-container>
+

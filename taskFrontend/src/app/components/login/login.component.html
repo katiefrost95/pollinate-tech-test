@@ -1,0 +1,26 @@
+<form [formGroup]="form">
+    <fieldset>
+        <legend>Register/Login</legend>
+        <p class="form-legend-desc">
+        Please enter your username and password to register or login
+        </p>
+        <div class="form-field">
+            <label>Username:</label>
+            <input name="username" formControlName="username" 
+                   type="text">
+        </div>
+        <div class="form-field">
+            <label>Password:</label>
+            <input name="password" formControlName="password" 
+                   type="password">
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button class="button button-primary" 
+                (click)="login()">Login</button>
+    </div>
+    <div class="form-buttons">
+        <button class="button button-primary" 
+                (click)="register()">Register</button>
+    </div>
+</form>

@@ -1,0 +1,82 @@
+<app-logout></app-logout>
+
+<div class="task-form">
+  <h2>New Task</h2>
+  <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+    <input
+      type="text"
+      [(ngModel)]="newTask.title"
+      name="title"
+      placeholder="Task Title"
+      required
+    />
+    <input
+      type="date"
+      [(ngModel)]="newTask.dueDate"
+      name="dueDate"
+      placeholder="Task Due Date in Format yyyy-mm-dd"
+      #dueDate="ngModel"
+    />
+    <button type="submit" class="btn btn-primary">Add Task</button>
+  </form>
+</div>
+
+<div class="task-list">
+  <h2>Task List</h2>
+
+  <ul class="tasks">
+    <li class="task-row" *ngFor="let task of tasks$ | async">
+      <!-- LEFT: read-only view OR edit inputs -->
+      <div class="task-main" *ngIf="!editingTask || editingTask.id !== task.id; else editMode">
+        <span class="task-title">{{ task.title }}</span>
+        <span class="task-date">
+          {{ task.dueDate ? ' - Due: ' + task.dueDate : ' - No Due Date' }}
+        </span>
+      </div>
+
+      <!-- RIGHT: actions -->
+      <div class="task-actions" *ngIf="!editingTask || editingTask.id !== task.id; else editActions">
+        <button class="btn btn-xs" (click)="startEdit(task)">Edit</button>
+        <button class="btn btn-xs btn-danger" (click)="deleteTask(task)" [disabled]="!task.id">Delete</button>
+      </div>
+
+      <!-- EDIT MODE -->
+      <ng-template #editMode>
+        <div class="task-main">
+          <ng-container *ngIf="editingTask as et">
+            <!-- Title: non-nullable -->
+            <input
+              type="text"
+              class="inline-input title-input"
+              [ngModel]="et.title"
+              (ngModelChange)="et.title = $event"
+              name="edit_title_{{ et.id }}"
+              placeholder="Task Title"
+              required
+              [ngModelOptions]="{ standalone: true }"
+            />
+
+            <!-- Due date: nullable, map '' <-> null -->
+            <input
+              type="date"
+              class="inline-input date-input"
+              [ngModel]="et.dueDate || ''"
+              (ngModelChange)="et.dueDate = $event ? $event : null"
+              name="edit_dueDate_{{ et.id }}"
+              placeholder="Task Due Date in Format yyyy-mm-dd"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </ng-container>
+        </div>
+      </ng-template>
+
+      <!-- EDIT MODE ACTIONS (on the right) -->
+      <ng-template #editActions>
+        <div class="task-actions">
+          <button class="btn btn-xs btn-primary" (click)="saveEdit()">Save</button>
+          <button class="btn btn-xs" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+</div>

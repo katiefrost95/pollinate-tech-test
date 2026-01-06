@@ -29,6 +29,7 @@ Prerequisites:
 Run Locally:
 
     cd taskFrontend
+    npm install
     ng serve
 
 The application will run on http://localhost:4200
